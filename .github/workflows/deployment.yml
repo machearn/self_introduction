@@ -1,0 +1,27 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Push to DockerHub
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+        image: machearn/galaxy_controller
+        tags: latest
+        registry: docker.io
+        dockerfile: Dockerfile
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
