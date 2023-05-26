@@ -22,3 +22,25 @@ spec:
             name: self-introduction-service
             port:
               number: 80
+
+  - host: "www.machearn.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: self-introduction-service
+            port:
+              number: 80
+
+  - host: "profile.machearn.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: self-introduction-service
+            port:
+              number: 80
