@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: self-introduction-deployment
+  labels:
+    app: self-introduction
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: self-introduction
+  template:
+    metadata:
+      labels:
+        app: self-introduction
+    spec:
+      containers:
+        - name: self-introduction
+          image: machearn/self_introduction:latest
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
