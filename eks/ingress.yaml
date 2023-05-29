@@ -44,3 +44,7 @@ spec:
             name: self-introduction-service
             port:
               number: 80
+  tls:
+  - hosts:
+    - machearn.com
+    secretName: machearn-profile-cert
